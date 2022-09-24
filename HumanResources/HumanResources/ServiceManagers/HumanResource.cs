@@ -22,7 +22,7 @@ namespace HumanResources.ServiceManagers
 
 
 
-        /* M E T H O D S */
+                                       /* M E T H O D S */
         /*  =============================================================================================== */
         
         public void AddDepartment(string name, int employeelimit, int salarylimit)
@@ -33,7 +33,6 @@ namespace HumanResources.ServiceManagers
                 department = new Department(name, employeelimit, salarylimit);
                 Array.Resize(ref _departments, _departments.Length + 1);
                 _departments[_departments.Length - 1] = department;
-
             }
         }
 
