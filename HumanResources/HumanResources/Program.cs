@@ -52,7 +52,7 @@ static void ShowDepartments(HumanResource humanResource)
     {
         foreach (var item in humanResource.Department)
         {
-            Console.WriteLine($"Department name: {item.Name} - Maximum salary: {item.SalaryLimit} AZN - Maximum employee count: {item.WorkerLimit} employees");
+            Console.WriteLine($"Department name: {item.Name} - Maximum salary: {item.SalaryLimit} $ - Maximum employee count: {item.WorkerLimit} employees");
         }
     }
     else
@@ -65,7 +65,6 @@ static void AddDepartment(HumanResource humanResource)
 {
     string name;
     bool check = true;
-    bool checkSalary = true;
     do
     {
         if (check)
@@ -80,30 +79,31 @@ static void AddDepartment(HumanResource humanResource)
         check = false;
 
     } while (humanResource.FindDepartment(name) != null);
-    int salarylimit;
+    int salaryLimit;
     do
     {
-        if (checkSalary)
-        {
-            Console.WriteLine("The maximum salary in department: ");
-        }
-        else
-        {
-            Console.WriteLine("Try correct format!");
-        }
-        salarylimit = Convert.ToInt32(Console.ReadLine());
-        checkSalary = false;
+        Console.WriteLine("The maximum salary in department:");
+        string salaryCheck = Console.ReadLine();
 
-    } while (Convert.ToInt32(salarylimit) < 2000);
-    int workerlimit;
+        if (!Int32.TryParse(salaryCheck, out salaryLimit))
+        {
+            Console.WriteLine("Not valid number try again");
+        }
+
+    } while (Convert.ToInt32(salaryLimit) < 2000);
+    int workerLimit;
     do
     {
-        Console.WriteLine("The maximum count of employees in department: ");
-        workerlimit = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("The maximum count of employees in department:");
+        string workerCheck = Console.ReadLine(); 
+        if (!Int32.TryParse(workerCheck, out workerLimit))
+        {
+            Console.WriteLine("Not valid number try again");
+        }
 
-    } while (Convert.ToInt32(workerlimit) < 1);
+    } while (Convert.ToInt32(workerLimit) < 1);
 
-    humanResource.AddDepartment(name, workerlimit, salarylimit);
+    humanResource.AddDepartment(name, workerLimit, salaryLimit);
 }
 
 static void EditDepartment(HumanResource humanResource)
@@ -138,8 +138,8 @@ static void EditDepartment(HumanResource humanResource)
     } while (humanResource.FindDepartment(newName) != null);
 
 
-    int newsalarylimit;
-    int newworkerlimit;
+    int newsalaryLimit;
+    int newworkerLimit;
     check = true;
     do
     {
@@ -149,18 +149,18 @@ static void EditDepartment(HumanResource humanResource)
         {
             Console.WriteLine("Enter minimum employe salary, which you want edit:");
         }
-        newworkerlimit = Convert.ToInt32(Console.ReadLine());
+        newworkerLimit = Convert.ToInt32(Console.ReadLine());
         if (check)
             Console.WriteLine("Enter minimum employe count, which you want edit:");
         else
             Console.WriteLine("Please enter correct!!!");
 
-        newsalarylimit = Convert.ToInt32(Console.ReadLine());
+        newsalaryLimit = Convert.ToInt32(Console.ReadLine());
 
 
 
-    } while (humanResource.FindDepartmentLimit(newworkerlimit, newsalarylimit) != null);
+    } while (humanResource.FindDepartmentLimit(newworkerLimit, newsalaryLimit) != null);
 
     
-    humanResource.EditDepartment(name, newName, newsalarylimit, newworkerlimit);
+    humanResource.EditDepartment(name, newName, newsalaryLimit, newworkerLimit);
 }
