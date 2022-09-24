@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HumanResources.ServiceManagers.Interfaces
 {
-    public interface IHumanResource
+    public interface IHumanResourceManager
     {
+        public void AddDepartment(string name, int employeeLimit, int salaryLimit);
     }
 }

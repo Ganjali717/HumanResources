@@ -8,5 +8,33 @@ namespace HumanResources.Models
 {
     public class Employee
     {
+        public static int TotalCount;
+        static Employee()
+        {
+            TotalCount = 1000;
+        }
+        public Employee(string fullname, string departmentname, int salary)
+        {
+            this.Fullname = fullname;
+            this.DepartmentName = departmentname;
+            this.Salary = salary;
+            No = DepartmentName[0] + TotalCount.ToString();
+            TotalCount++;
+        }
+
+        /// 
+        /// =============================================================================== ///
+        /// 
+
+        //Employee fields
+        public string No;
+        public string Fullname;
+        public string Position;
+        public int Salary;
+        public string DepartmentName;
+        public override string ToString()
+        {
+            return $"Employee number: {No} | Fullname: {Fullname} | Department:{DepartmentName} | Position: {Position} | Salary:{Salary} AZN";
+        }
     }
 }

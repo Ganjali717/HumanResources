@@ -1,0 +1,15 @@
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.csproj.AssemblyReference.cache
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.AssemblyInfoInputs.cache
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.AssemblyInfo.cs
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\bin\Debug\net6.0\HumanResources.exe
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\bin\Debug\net6.0\HumanResources.deps.json
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\bin\Debug\net6.0\HumanResources.runtimeconfig.json
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\bin\Debug\net6.0\HumanResources.dll
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\bin\Debug\net6.0\HumanResources.pdb
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.dll
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\refint\HumanResources.dll
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.pdb
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\HumanResources.genruntimeconfig.cache
+C:\Users\LENOVO\OneDrive\Desktop\HumanResources\HumanResources\HumanResources\obj\Debug\net6.0\ref\HumanResources.dll
