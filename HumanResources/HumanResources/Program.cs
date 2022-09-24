@@ -76,6 +76,7 @@ static void AddDepartment(HumanResource humanResource)
             Console.WriteLine("The department you entered already exist, please enter again:");
         }
         name = Console.ReadLine();
+
         check = false;
 
     } while (humanResource.FindDepartment(name) != null);
