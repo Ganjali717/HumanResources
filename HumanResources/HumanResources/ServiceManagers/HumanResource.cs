@@ -37,10 +37,28 @@ namespace HumanResources.ServiceManagers
         }
 
 
+        //Bu method department uzerinde deyiwiklik edir 
+        public void EditDepartment(string name, string newName, int newworkerlimit, int newsalarylimit)
+        {
+            if (FindDepartment(newName) != null) return;
+            if (FindDepartmentLimit(newworkerlimit, newsalarylimit) == null) return;
+
+            Department existDepartment = FindDepartment(name);/*
+            existDepartment = FindDepartmentLimit(newworkerlimit, newsalarylimit);*/
+
+            if (existDepartment != null)
+            {
+                existDepartment.Name = newName;
+                existDepartment.WorkerLimit = newworkerlimit;
+                existDepartment.SalaryLimit = newsalarylimit;
+            }
+        }
 
 
 
-                                  /* H E L P E R     M E T H O D S */
+
+
+        /* H E L P E R     M E T H O D S */
         /*  =============================================================================================== */
 
         public Department FindDepartment(string name)
@@ -49,6 +67,19 @@ namespace HumanResources.ServiceManagers
             foreach (var item in _departments)
             {
                 if (item.Name == name)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+
+
+        public Department FindDepartmentLimit(int workerlimit, int salarylimit)
+        {
+            foreach (var item in _departments)
+            {
+                if (item.WorkerLimit == workerlimit && item.SalaryLimit == salarylimit)
                 {
                     return item;
                 }

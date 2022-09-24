@@ -1,4 +1,4 @@
-﻿using HumanResources.ServiceManagers;
+﻿using HumanResources.Models;using HumanResources.ServiceManagers;
 
 
 
@@ -26,6 +26,7 @@ do
     Console.WriteLine("3 - EXIT");
 
     Console.WriteLine("\nSelect the operation you want to perform:");
+    Console.ForegroundColor = ConsoleColor.White;
     ans = Console.ReadLine();
     switch (ans)
     {
@@ -34,6 +35,9 @@ do
             break;
         case "1.2": 
             AddDepartment(humanResource);
+            break;
+        case "1.3":
+            EditDepartment(humanResource);
             break;
         default:
             break;
@@ -61,6 +65,7 @@ static void AddDepartment(HumanResource humanResource)
 {
     string name;
     bool check = true;
+    bool checkSalary = true;
     do
     {
         if (check)
@@ -69,7 +74,7 @@ static void AddDepartment(HumanResource humanResource)
         }
         else
         {
-            Console.WriteLine("The department you entered is invalid, please enter it again:");
+            Console.WriteLine("The department you entered already exist, please enter again:");
         }
         name = Console.ReadLine();
         check = false;
@@ -78,8 +83,16 @@ static void AddDepartment(HumanResource humanResource)
     int salarylimit;
     do
     {
-        Console.WriteLine("The maximum salary in department: ");
+        if (checkSalary)
+        {
+            Console.WriteLine("The maximum salary in department: ");
+        }
+        else
+        {
+            Console.WriteLine("Try correct format!");
+        }
         salarylimit = Convert.ToInt32(Console.ReadLine());
+        checkSalary = false;
 
     } while (Convert.ToInt32(salarylimit) < 2000);
     int workerlimit;
@@ -91,4 +104,63 @@ static void AddDepartment(HumanResource humanResource)
     } while (Convert.ToInt32(workerlimit) < 1);
 
     humanResource.AddDepartment(name, workerlimit, salarylimit);
+}
+
+static void EditDepartment(HumanResource humanResource)
+{
+    string name;
+    bool check = true;
+    do
+    {
+
+        if (check)
+            Console.WriteLine("The name of department which you want to edit: ");
+
+        else
+            Console.WriteLine("The department you entered is not exit, please re-enter:");
+
+        name = Console.ReadLine();
+        check = false;
+
+    } while (humanResource.FindDepartment(name) == null);
+
+    string newName;
+    check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Enter the new name of department:");
+        else
+            Console.WriteLine("The department you entered already exit, please re-enter:");
+
+        newName = Console.ReadLine();
+        check = false;
+    } while (humanResource.FindDepartment(newName) != null);
+
+
+    int newsalarylimit;
+    int newworkerlimit;
+    check = true;
+    do
+    {
+
+
+        if (check)
+        {
+            Console.WriteLine("Enter minimum employe salary, which you want edit:");
+        }
+        newworkerlimit = Convert.ToInt32(Console.ReadLine());
+        if (check)
+            Console.WriteLine("Enter minimum employe count, which you want edit:");
+        else
+            Console.WriteLine("Please enter correct!!!");
+
+        newsalarylimit = Convert.ToInt32(Console.ReadLine());
+
+
+
+    } while (humanResource.FindDepartmentLimit(newworkerlimit, newsalarylimit) != null);
+
+    
+    humanResource.EditDepartment(name, newName, newsalarylimit, newworkerlimit);
 }
