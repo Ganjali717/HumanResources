@@ -48,6 +48,9 @@ do
         case "2.3":
             AddEmployee(humanResource);
             break;
+        case "2.4":
+            EditEmployee(humanResource);
+            break;
         default:
             break;
     }
@@ -209,7 +212,6 @@ static void ShowEmployesOfDepartment(HumanResource humanResource)
         name = Console.ReadLine();
         department = humanResource.FindDepartment(name);
         check = false;
-
     } while (department == null);
 
     if (department.employee.Length > 0)
@@ -296,4 +298,46 @@ static void AddEmployee(HumanResource humanResource)
 
 
     humanResource.AddEmployee(departmentName, fullname, position, salary);
+}
+
+static void EditEmployee(HumanResource humanResource)
+{
+
+    string no;
+    bool check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Please enter employees' number which you want edit:");
+        else
+            Console.WriteLine("Employee with this number, does not exist, please try again:");
+        no = Console.ReadLine();
+
+
+        check = false;
+    } while (humanResource.GetEmployeesByNo(no) == null);
+
+    int newSalary;
+    check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Please enter the new salary:");
+        else
+            Console.WriteLine($"The minimum salary 2000$, please re-enter:");
+        newSalary = Convert.ToInt32(Console.ReadLine());
+        check = false;
+    } while (newSalary < 250);
+
+
+    string newPosition;
+    check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Please enter new position:");
+        newPosition = Console.ReadLine();
+    } while (newPosition.Length < 2);
+
+    humanResource.EditEmployee(no, newSalary, newPosition);
 }

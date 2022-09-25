@@ -70,8 +70,26 @@ namespace HumanResources.ServiceManagers
             department.employee[department.employee.Length - 1] = employee;
         }
 
+        public void EditEmployee(string no, int newSalary, string newPosition)
+        {
 
-                                       /* H E L P E R     M E T H O D S */
+            if (GetEmployeesByNo(no) == null) return;
+
+            Employee[] existEmployee = GetEmployeesByNo(no);
+
+            foreach (var item in existEmployee)
+            {
+                if (item.No == no)
+                {
+                    item.Salary = newSalary;
+                    item.Position = newPosition;
+                }
+
+            }
+
+        }
+
+        /* H E L P E R     M E T H O D S */
         /*  =============================================================================================== */
 
         public Department FindDepartment(string name)
@@ -98,6 +116,23 @@ namespace HumanResources.ServiceManagers
                 }
             }
             return null;
+        }
+
+        public Employee[] GetEmployeesByNo(string no)
+        {
+            Employee[] employee = AllEmployees();
+
+            foreach (var item in employee)
+            {
+                if (item.No == no)
+                {
+                    Array.Resize(ref employee, employee.Length + 1);
+                    employee[employee.Length - 1] = item;
+                }
+            }
+
+            return employee;
+
         }
 
         public Employee[] AllEmployees()
