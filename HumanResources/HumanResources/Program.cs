@@ -42,6 +42,9 @@ do
         case "2.1":
             ShowAllEmployees(humanResource);
             break;
+        case "2.2":
+            ShowEmployesOfDepartment(humanResource);
+            break;
         case "2.3":
             AddEmployee(humanResource);
             break;
@@ -188,6 +191,39 @@ static void ShowAllEmployees(HumanResource humanResource)
     else
     {
         Console.WriteLine("There are not employees in the company!");
+    }
+}
+
+static void ShowEmployesOfDepartment(HumanResource humanResource)
+{
+    string name;
+    bool check = true;
+    Department department = null;
+    do
+    {
+        if (check)
+            Console.WriteLine("Enter department name,which employees you want to see:");
+        else
+            Console.WriteLine("The department you entered is not already exit, please re-enter:");
+
+        name = Console.ReadLine();
+        department = humanResource.FindDepartment(name);
+        check = false;
+
+    } while (department == null);
+
+    if (department.employee.Length > 0)
+    {
+        Console.WriteLine("=================================");
+        Console.WriteLine($"{name} departments' employees :\n");
+        foreach (var item in department.employee)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    else
+    {
+        Console.WriteLine("There are not employees in this department!");
     }
 }
 
