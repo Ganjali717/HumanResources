@@ -110,6 +110,24 @@ namespace HumanResources.ServiceManagers
 
         }
 
+        public Employee[] SearchEmployee(string search)
+        {
+            Employee[] employees = new Employee[0];
+            foreach (var department in _departments)
+            {
+                foreach (var empl in department.employee)
+                {
+                    if ((empl.Fullname).Contains(search))
+                    {
+
+                        Array.Resize(ref employees, employees.Length + 1);
+                        employees[employees.Length - 1] = empl;
+
+                    }
+                }
+            }
+            return employees;
+        }
 
         /* H E L P E R     M E T H O D S */
         /*  =============================================================================================== */

@@ -33,6 +33,11 @@ namespace HumanResources.ServiceManagers.Interfaces
         //Edit employee
         void EditEmployee(string no, int salary, string position);
 
+        /// =========================================================
+
+        //Search employees
+        Employee[] SearchEmployee(string search);
+
 
         /// =========================================================
         /// H E L P E R       M E T H O D S

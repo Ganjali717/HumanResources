@@ -1,9 +1,7 @@
-﻿using HumanResources.Models;using HumanResources.ServiceManagers;
-
-
+﻿using HumanResources.Models;
+using HumanResources.ServiceManagers;
 
 /*Human resources simple console application project for practice*/
-
 
 HumanResource humanResource = new HumanResource();
 
@@ -34,7 +32,7 @@ do
             ShowDepartments(humanResource);
             break;
         case "1.2": 
-            AddDepartment(humanResource);
+            AddDepartment(humanResource); 
             break;
         case "1.3":
             EditDepartment(humanResource);
@@ -53,6 +51,9 @@ do
             break;
         case "2.5":
             RemoveEmployee(humanResource);
+            break;
+        case "2.6":
+            Search(humanResource);
             break;
         default:
             break;
@@ -378,4 +379,34 @@ static void RemoveEmployee(HumanResource humanResource)
     } while (humanResource.GetEmployeesByNo(no) == null);
 
     humanResource.RemoveEmployee(no, departmentname);
+}
+
+static void Search(HumanResource humanResource)
+{
+    string search;
+
+    do
+    {
+        Console.WriteLine("Enter data for search:");
+        search = Console.ReadLine();
+
+    } while (string.IsNullOrWhiteSpace(search));
+
+
+
+
+    var serachedStundents = humanResource.SearchEmployee(search);
+
+    if (serachedStundents.Length > 0)
+    {
+        Console.WriteLine("Employees: \n");
+        foreach (var item in serachedStundents)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    else
+    {
+        Console.WriteLine("No search query found!");
+    }
 }
