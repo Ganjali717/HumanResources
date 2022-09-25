@@ -39,6 +39,12 @@ do
         case "1.3":
             EditDepartment(humanResource);
             break;
+        case "2.1":
+            ShowAllEmployees(humanResource);
+            break;
+        case "2.3":
+            AddEmployee(humanResource);
+            break;
         default:
             break;
     }
@@ -164,4 +170,94 @@ static void EditDepartment(HumanResource humanResource)
 
     
     humanResource.EditDepartment(name, newName, newsalaryLimit, newworkerLimit);
+}
+
+static void ShowAllEmployees(HumanResource humanResource)
+{
+    var employee = humanResource.AllEmployees();
+
+    if (employee.Length > 0)
+    {
+        Console.WriteLine("==================");
+        Console.WriteLine("All employees in the company:\n");
+        foreach (var empl in employee)
+        {
+            Console.WriteLine(empl);
+        }
+    }
+    else
+    {
+        Console.WriteLine("There are not employees in the company!");
+    }
+}
+
+static void AddEmployee(HumanResource humanResource)
+{
+    string departmentName;
+    Department department = null;
+    bool check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Enter department name, in which you want to add employee:");
+        else
+            Console.WriteLine("The department you entered is not already exit, please re-enter:");
+
+        departmentName = Console.ReadLine();
+        department = humanResource.FindDepartment(departmentName);
+        check = false;
+    } while (department == null);
+
+    if (Convert.ToInt32(department.WorkerLimit) <= department.employee.Length)
+    {
+        Console.WriteLine("Employee limit increased!");
+        return;
+    }
+
+    string fullname;
+    check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Enter fullname of employee: ");
+        else
+            Console.WriteLine("This employee already exist: ");
+
+        fullname = Console.ReadLine();
+        check = false;
+    } while (string.IsNullOrWhiteSpace(fullname));
+
+    string position;
+    check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Enter the position of employee:");
+        else
+            Console.WriteLine("Please enter again:");
+
+        position = Console.ReadLine();
+        check = false;
+
+    } while (string.IsNullOrWhiteSpace(position) || position.Length < 2);
+
+    int salary;
+    check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Please enter salary of employee:");
+        else
+            Console.WriteLine($"The maximum salary {department.SalaryLimit} $ try again:");
+
+        salary = Convert.ToInt32(Console.ReadLine());
+        check = false;
+    } while (department.SalaryLimit < salary);
+
+    /* string no;
+     no = departmentname[0] + Employee.TotalCount.ToString();*/
+    /* Console.WriteLine(no);*/
+
+
+    humanResource.AddEmployee(departmentName, fullname, position, salary);
 }

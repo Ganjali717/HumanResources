@@ -19,5 +19,9 @@ namespace HumanResources.ServiceManagers.Interfaces
         /// =========================================================
         /// Edit department
         void EditDepartment(string name, string newName, int newworkerlimit, int newsalarylimit);
+
+        /// =========================================================
+        //Add employee
+        void AddEmployee(string departmentname, string fullname, string position, int salary);
     }
 }

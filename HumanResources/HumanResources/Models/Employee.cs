@@ -13,10 +13,10 @@ namespace HumanResources.Models
         {
             TotalCount = 1000;
         }
-        public Employee(string fullname, string departmentname, int salary)
+        public Employee(string fullname, string departmentName, int salary)
         {
             this.Fullname = fullname;
-            this.DepartmentName = departmentname;
+            this.DepartmentName = departmentName;
             this.Salary = salary;
             No = DepartmentName[0] + TotalCount.ToString();
             TotalCount++;
