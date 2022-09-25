@@ -14,7 +14,6 @@ namespace HumanResources.Models
             this.WorkerLimit = employeeLimit;
             this.SalaryLimit = salarylimit;
         }
-
         
         public string Name;
         public int WorkerLimit;

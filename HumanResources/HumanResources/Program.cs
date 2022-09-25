@@ -1,10 +1,7 @@
 ﻿using HumanResources.Models;
 using HumanResources.ServiceManagers;
 
-/*Human resources simple console application project for practice*/
-
 HumanResource humanResource = new HumanResource();
-
 string ans;
 do
 {
@@ -60,7 +57,6 @@ do
     }
 
 } while (ans != "3");
-
 
 static void ShowDepartments(HumanResource humanResource)
 {

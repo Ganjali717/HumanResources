@@ -22,11 +22,6 @@ namespace HumanResources.Models
             TotalCount++;
         }
 
-        /// 
-        /// =============================================================================== ///
-        /// 
-
-        //Employee fields
         public string No;
         public string Fullname;
         public string Position;

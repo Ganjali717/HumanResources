@@ -10,8 +10,6 @@ namespace HumanResources.ServiceManagers
 {
     public class HumanResource:IHumanResourceManager
     {
-
-        /**/
         public HumanResource()
         {
             _departments = new Department[0]; 
@@ -19,11 +17,6 @@ namespace HumanResources.ServiceManagers
 
         private Department[] _departments; 
         public Department[] Department { get { return _departments; } }
-
-
-
-                                              /* M E T H O D S */
-        /*  =============================================================================================== */
         
         public void AddDepartment(string name, int employeelimit, int salarylimit)
         {
@@ -35,8 +28,6 @@ namespace HumanResources.ServiceManagers
                 _departments[_departments.Length - 1] = department;
             }
         }
-
-        
         public void EditDepartment(string name, string newName, int newworkerlimit, int newsalarylimit)
         {
             if (FindDepartment(newName) != null) return;
@@ -52,8 +43,6 @@ namespace HumanResources.ServiceManagers
                 existDepartment.SalaryLimit = newsalarylimit;
             }
         }
-
-
         public void AddEmployee(string departmentName, string fullname, string position, int salary)
         {
             Department department = FindDepartment(departmentName); 
@@ -69,7 +58,6 @@ namespace HumanResources.ServiceManagers
             Array.Resize(ref department.employee, department.employee.Length + 1);
             department.employee[department.employee.Length - 1] = employee;
         }
-
         public void EditEmployee(string no, int newSalary, string newPosition)
         {
 
@@ -88,7 +76,6 @@ namespace HumanResources.ServiceManagers
             }
 
         }
-
         public void RemoveEmployee(string no, string departmentname)
         {
 
@@ -109,7 +96,6 @@ namespace HumanResources.ServiceManagers
             }
 
         }
-
         public Employee[] SearchEmployee(string search)
         {
             Employee[] employees = new Employee[0];
@@ -129,9 +115,7 @@ namespace HumanResources.ServiceManagers
             return employees;
         }
 
-        /* H E L P E R     M E T H O D S */
         /*  =============================================================================================== */
-
         public Department FindDepartment(string name)
         {
 
@@ -144,7 +128,6 @@ namespace HumanResources.ServiceManagers
             }
             return null;
         }
-
         public Department FindDepartmentLimit(int workerlimit, int salarylimit)
         {
             foreach (var item in _departments)
@@ -156,7 +139,6 @@ namespace HumanResources.ServiceManagers
             }
             return null;
         }
-
         public Employee[] AllEmployees()
         {
             Employee[] employees = new Employee[0];
@@ -172,7 +154,6 @@ namespace HumanResources.ServiceManagers
             }
             return employees;
         }
-
         public Employee[] GetEmployeesByNo(string no)
         {
             Employee[] employee = AllEmployees();
@@ -189,7 +170,6 @@ namespace HumanResources.ServiceManagers
             return employee;
 
         }
-
         public Employee[] GetEmployeesByName(string fullname)
         {
             Employee[] employees = new Employee[0];
