@@ -51,6 +51,9 @@ do
         case "2.4":
             EditEmployee(humanResource);
             break;
+        case "2.5":
+            RemoveEmployee(humanResource);
+            break;
         default:
             break;
     }
@@ -340,4 +343,39 @@ static void EditEmployee(HumanResource humanResource)
     } while (newPosition.Length < 2);
 
     humanResource.EditEmployee(no, newSalary, newPosition);
+}
+
+static void RemoveEmployee(HumanResource humanResource)
+{
+    string departmentname;
+    bool check = true;
+    do
+    {
+        if (check)
+        {
+            Console.WriteLine("Please enter department name: ");
+        }
+        else
+        {
+            Console.WriteLine("The department you entered is not exit, please re-enter:");
+        }
+        departmentname = Console.ReadLine();
+        check = false;
+
+    } while (humanResource.FindDepartment(departmentname) == null);
+
+    string no;
+    check = true;
+    do
+    {
+        if (check)
+            Console.WriteLine("Please enter employee's number, which you want delete:");
+        else
+            Console.WriteLine("Employee with this number, does not exist:");
+
+        no = Console.ReadLine();
+        check = false;
+    } while (humanResource.GetEmployeesByNo(no) == null);
+
+    humanResource.RemoveEmployee(no, departmentname);
 }

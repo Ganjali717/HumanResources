@@ -25,7 +25,27 @@ namespace HumanResources.ServiceManagers.Interfaces
         void AddEmployee(string departmentname, string fullname, string position, int salary);
 
         /// =========================================================
+
+        //remove employee
+        void RemoveEmployee(string no, string departmentname);
+
+        /// =========================================================
         //Edit employee
         void EditEmployee(string no, int salary, string position);
+
+
+        /// =========================================================
+        /// H E L P E R       M E T H O D S
+        /// =========================================================
+
+        Department FindDepartment(string name);
+
+
+        Department FindDepartmentLimit(int workerlimmit, int salarylimit);
+
+        Employee[] AllEmployees();
+        Employee[] GetEmployeesByNo(string no);
+
+        Employee[] GetEmployeesByName(string fullname);
     }
 }

@@ -89,6 +89,28 @@ namespace HumanResources.ServiceManagers
 
         }
 
+        public void RemoveEmployee(string no, string departmentname)
+        {
+
+            if (GetEmployeesByNo(no) == null) return;
+
+            Employee[] removeEmployee = GetEmployeesByNo(no);
+            foreach (var item in removeEmployee)
+            {
+                if (item.No == no && item.DepartmentName == departmentname)
+                {
+                    item.No = null;
+                    item.Fullname = null;
+                    item.Position = null;
+                    item.Salary = 0;
+                    item.DepartmentName = null;
+                }
+
+            }
+
+        }
+
+
         /* H E L P E R     M E T H O D S */
         /*  =============================================================================================== */
 
@@ -105,7 +127,6 @@ namespace HumanResources.ServiceManagers
             return null;
         }
 
-
         public Department FindDepartmentLimit(int workerlimit, int salarylimit)
         {
             foreach (var item in _departments)
@@ -116,6 +137,22 @@ namespace HumanResources.ServiceManagers
                 }
             }
             return null;
+        }
+
+        public Employee[] AllEmployees()
+        {
+            Employee[] employees = new Employee[0];
+
+            foreach (var department in _departments)
+            {
+                foreach (var empl in department.employee)
+                {
+
+                    Array.Resize(ref employees, employees.Length + 1);
+                    employees[employees.Length - 1] = empl;
+                }
+            }
+            return employees;
         }
 
         public Employee[] GetEmployeesByNo(string no)
@@ -135,17 +172,20 @@ namespace HumanResources.ServiceManagers
 
         }
 
-        public Employee[] AllEmployees()
+        public Employee[] GetEmployeesByName(string fullname)
         {
             Employee[] employees = new Employee[0];
-
             foreach (var department in _departments)
             {
                 foreach (var empl in department.employee)
                 {
+                    if (empl.Fullname == fullname)
+                    {
 
-                    Array.Resize(ref employees, employees.Length + 1);
-                    employees[employees.Length - 1] = empl;
+                        Array.Resize(ref employees, employees.Length + 1);
+                        employees[employees.Length - 1] = empl;
+
+                    }
                 }
             }
             return employees;
